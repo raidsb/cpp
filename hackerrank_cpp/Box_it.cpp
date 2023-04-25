@@ -25,7 +25,7 @@ class Box{
         int getHeight() {return this->h;}
         
         long long CalculateVolume() {
-            return l * b * h;
+            return (long long) l * b * h;
         }
         
         bool operator<(Box& otherBox) {
@@ -39,7 +39,7 @@ class Box{
                 return false;            
         };
         
-        friend ostream& operator <<(ostream& out, Box& box){
+        friend ostream& operator <<(ostream& out, Box& box) {
             out << box.l << " " << box.b << " " << box.h;
             return out;
         }
