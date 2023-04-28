@@ -49,7 +49,7 @@ public:
 	}
 };
 
-int main() {
+int main_adjacency_list_class() {
 	vector<string> cities = { "Jerusalem", "Haifa", "Yafa", "Akka" };
 	Graph g(cities);
 	g.add_edge("Jerusalem", "Haifa");

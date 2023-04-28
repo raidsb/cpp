@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="find_center_of_star_graph.cpp" />
     <ClCompile Include="Maximal_Network_Rank.cpp" />
+    <ClCompile Include="Minimal_Trio_Degree.cpp" />
     <ClCompile Include="representation_adjacency_list.cpp" />
     <ClCompile Include="representation_adjacency_list_class.cpp" />
   </ItemGroup>

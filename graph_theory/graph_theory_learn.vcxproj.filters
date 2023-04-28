@@ -27,5 +27,8 @@
     <ClCompile Include="Maximal_Network_Rank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Minimal_Trio_Degree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
