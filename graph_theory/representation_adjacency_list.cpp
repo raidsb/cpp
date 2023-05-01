@@ -115,6 +115,53 @@ public:
 		}
 	}
 
+	// Depth first search. the helper function.
+	void dfsHelper(int node, bool* visited) {
+		visited[node] = true;
+		cout << node << ",";
+
+		// mode a dfs call on all its unvisited neighbours
+		for (int neighbour : l[node]) {
+			if (!visited[neighbour]) {
+				dfsHelper(neighbour, visited);
+			}
+		}
+	}
+
+	// The dfs main function. arg: the starting node.
+	void dfs(int source) {
+		// a vector to mark visited nodes.
+		bool* visited = new bool[V] {0};
+
+		// calling the dfs helper. the recursive function.
+		dfsHelper(source, visited);
+	}
+
+	// The dfs for detecting cycle in undirected.
+	bool dfs_detect_cycle(int node, vector<bool>& visited, int parent) {
+		// mark that node visited
+		visited[node] = true;
+
+		for (auto nbr : l[node]) {
+			if (!visited[nbr]) {
+				bool nbrFoundCycle = dfs_detect_cycle(nbr, visited, node);
+				if (nbrFoundCycle) {
+					return true;
+				}
+			}
+			else if (nbr != parent) { // make sure that it is not the direct parent.
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	bool contains_cycle() {
+		vector<bool> visited(V, false);
+		return dfs_detect_cycle(0, visited, -1);
+	}
+
 	void printAdjList() {
 		for (int i = 0; i < V; i++) {
 			cout << i << "-->";
@@ -139,13 +186,19 @@ int main() { // main_representation_adjacency_list
 	g.addEdge(5, 6);
 	
 	// printing the adjacency list
+	cout << "Adjacency list:" << endl;
 	g.printAdjList();
 
 	// breadth first search with source node is 1
+	cout << "Breadth first with source node is 1: " << endl;
 	g.bfs(1);
 	
 	// breadth first search with printing the path from 1 to 6
+	cout << "Breadth first with source is 1 and printing the path to destination 6:" << endl;
 	g.bfs(1, 6);
 
+	// depth first source is 1 
+	cout << "Depth first with source is 1: " << endl;
+	g.dfs(1);
 	return 0;
 }
