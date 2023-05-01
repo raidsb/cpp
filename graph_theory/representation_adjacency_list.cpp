@@ -115,7 +115,8 @@ public:
 		}
 	}
 
-	// Depth first search. the helper function.
+	// Depth first search. the helper function. 
+	// Next function is the dfs main function. the one calling this.
 	void dfsHelper(int node, bool* visited) {
 		visited[node] = true;
 		cout << node << ",";
@@ -128,7 +129,6 @@ public:
 		}
 	}
 
-	// The dfs main function. arg: the starting node.
 	void dfs(int source) {
 		// a vector to mark visited nodes.
 		bool* visited = new bool[V] {0};
@@ -162,6 +162,79 @@ public:
 		return dfs_detect_cycle(0, visited, -1);
 	}
 
+	// The topological sort - directed asyclic graph - using BFS also called Kahn algorithm
+	void topological_sort() {
+		vector<int> indegree(V, 0);
+
+		// Iterate over all the edges to find the right indegree
+		for (int i = 0; i < V; i++) {
+			// for each neighbour of node iterate over the neighbour and increase the degree for that neighbour
+			// because there is an in edge from the current node to the neighbour.
+			for (auto nbr : l[i]) {
+				indegree[nbr]++; 
+			}
+		}
+
+		// now using bfs 
+		queue<int> q;
+
+		// init the q with nodes having 0 indegree
+		for (int i = 0; i < V; i++) {
+			if (indegree[i] == 0) {
+				q.push(i);
+			}
+		}
+
+		// start popping 
+		while (!q.empty()) {
+			int node = q.front();
+			cout << node << " ";
+			q.pop();
+
+			// iterate over the nbrs of this node and reduces their indegree by 1
+			for (auto nbr : l[node]) {
+				indegree[nbr]--; // decrease the degree if that neighbour because the required node is already processed.
+				if (indegree[nbr] == 0) { // if the indegree of that neighbour is cleared then can push to q to process its neighbours.
+					q.push(nbr);
+				}
+			}
+		}
+	}
+
+	// The topological sort - directed asyclic graph - using DFS
+	void dfs_topological_sort_helper(int node, vector<bool>& visited, list<int>& ordering) {
+		visited[node] = true;
+
+		for (int nbr : l[node]) {
+			if (!visited[nbr]) {
+				dfs_topological_sort_helper(nbr, visited, ordering);
+			}
+		}
+
+		ordering.push_front(node);
+		return;
+	}
+	
+	void dfs_topological_sort() {
+		vector<bool> visited(V, false);
+		list<int> ordering;
+
+		// we call dfs from every node if it is not visited
+		for (int i = 0; i < V; i++) {
+			if (!visited[i]) {
+				dfs_topological_sort_helper(i, visited, ordering);
+			}
+		}
+
+		// print the ordering
+		for (auto node : ordering) {
+			cout << node << " ";
+		}
+		cout << endl;
+	}
+
+
+	// Printing adjacency list
 	void printAdjList() {
 		for (int i = 0; i < V; i++) {
 			cout << i << "-->";
