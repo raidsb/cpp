@@ -1,0 +1,118 @@
+[1] cat 
+    1- get the machine linux and version: cat /etc/SuSE-release
+
+[2] lsof
+    1- Killing nfs000000000 is busy: lsof +D /path
+       From <https://unix.stackexchange.com/questions/11238/how-to-get-over-device-or-resource-busy> 
+       Kill processId
+
+[3] rm
+    1- removing files and dirs: 1. rm -rf dirpath # deletes the dir tree
+                                2. rm filepath # delete the file
+
+[4] bunzip2
+    1- extracting: bunzip2 -c source_file_name > destination_file_name
+
+[5] curl 
+The curl command transfers data to or from a network server, using one of the supported protocols (HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE). It is designed to work without user interaction, so it is ideal for use in a shell script.
+
+From <https://www.computerhope.com/unix/curl.htm> 
+The software offers proxy support, user authentication, FTP uploading, HTTP posting, SSL connections, cookies, file transfer resume, metalink, and other features.
+
+From <https://www.computerhope.com/unix/curl.htm> 
+
+curl [options] [URL...]
+
+From <https://www.computerhope.com/unix/curl.htm> 
+
+Example from int: curl -fL https://goto.intel.com/getdt | sh 
+	1- The f means ftp? I don't think so
+	2- L means:
+(HTTP/HTTPS) If the server reports that the requested page has moved to a different location (indicated with a Location: header and a 3XX response code) this option makes curl redo the request on the new place. If used together with -i/--include or -I/--head, headers from all requested pages are shown. When authentication is used, curl only sends its credentials to the initial host. If a redirect takes curl to a different host, it won't be able to intercept the user+password. See also --location-trusted on how to change this. You can limit the amount of redirects to follow using the --max-redirs option.
+
+When curl follows a redirect and the request is not a plain GET (for example POST or PUT), it does the following request with a GET if the HTTP response was 301, 302, or 303. If the response code was any other 3xx code, curl re-sends the following request using the same unmodified method.
+
+From <https://www.computerhope.com/unix/curl.htm>
+
+[6] sh
+    sh is a command language interpreter that executes commands read from a command line string, the standard input, or a specified file.
+    From <https://www.computerhope.com/unix/ush.htm>
+
+[7] rsync
+    1. rsync -avcz rsync.{machine_name or site_name_abb_sy_pl..}.company.com:{target_directory}/* .
+
+[8] Home dir
+    1. home dir issues: 
+    check the home dir and show the biggest dirs then delete
+/usr/company/bin/ncdu --exclude ~/.snapshot ~ 
+
+    2. if a dir is needed in the home dir then:
+        a. create a folder in a custom disk space. example: .tox or .local
+        b. create a symbolic link to that disk space 
+        ln -s path/.tox .tox # run this in the home dir
+            c. check the symlink is created correctly: ls -a 
+
+[9] symlink
+    1. create a symbolic link 
+    ln -s [OPTIONS] FILE LINK
+
+[10] vars
+    1. showing the content of a variable: 
+    echo $variable_name
+
+[11] diff
+    1. Compare the first n lines of files: diff <( head -n 20 file1 ) <( head -n 20 file2 )
+    From <https://unix.stackexchange.com/questions/639065/compare-the-first-20-lines-of-two-files>
+
+[12] setenv
+    1. Adding additonal path to env variable: 
+        a. echo the content of the variable 
+        b. insert "new_path:" in the beginning of the content of the variable 
+        c. example: setenv PYTHONPATH /path/to/disk/something/something:/path/something/something/:/path/something/something/       the first path is the new additional one.
+
+[13] cp 
+1. copy entire folder to under another folder
+  cp -R /source_path/13j/ target_path/ # you will find a folder 13j under target_path # target_path/13j
+  cp /source_path/hdmt2_file.* target_path/ # copy the files that start with a string to the target
+
+[14] ls
+1. ls [dir_path] # list of contnet
+2. ls -a [dir_path] # list of content with hidden content
+3. ll [dir_path] # list content with information about them 
+4. ls -l [dir_path] # same above 
+5. ls -t # list in order by time
+6. ls -tr # list in order by time reverse 
+ls | wc -l  # counting the files in a dir 
+
+[15] grep
+1. grep string file 
+
+2. grep from bunzip2 file:
+bzcat /path/file.bz2 | grep string_grep
+
+grep only unique:
+3. grep string file | sort -u 
+
+grep from dir:
+4. grep -R string /directory
+
+grep options:
+-n            Show relative line number in the file
+'yourString*' String for search, followed by a wildcard character
+-r            Recursively search subdirectories listed
+.             Directory for search (current directory)
+
+	5. Count occurrences of a string: 
+	grep "string" file | wc -l
+	
+	
+Find string in director:
+grep -rnw '/path/to/somewhere/'-e 'pattern'
+	• -r or -R is recursive,
+	• -n is line number, and
+	• -w stands for match the whole word.
+	• -l (lower-case L) can be added to just give the file name of matching files.
+	• -e is the pattern used during the search
+
+From <https://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-string-on-linux> 
+
