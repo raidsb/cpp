@@ -18,16 +18,73 @@
     <ClCompile Include="representation_adjacency_list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="find_center_of_star_graph.cpp">
+    <ClCompile Include="representatio_find_center_of_star_graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="representation_adjacency_list_class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Maximal_Network_Rank.cpp">
+    <ClCompile Include="representation_Maximal_Network_Rank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Minimal_Trio_Degree.cpp">
+    <ClCompile Include="representation_Minimal_Trio_Degree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS_Snakes_and_ladders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS_Messege_Route.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS_word_ladder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS_valid_bfs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS_keys_and_rooms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS_largest_island.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS_Astronauts_pairs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS_reconstruct_itenrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_Cycle_in_undirected_graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_cycle_directed_Course Schedule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_cycle_Is Graph Bipartite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_Cycle_in_directed_graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_an_odd_cycle_length.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_cycle_in_grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Detect_cycle_shortest_cycle_undirected.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DAG_All_Paths_From_Source_to_Target.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DAG_course_schedule_2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DAG_largest_color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DAG_game_routes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

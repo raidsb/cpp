@@ -1,0 +1,66 @@
+﻿  DAG_All_Paths_From_Source_to_Target.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DAG_All_Paths_From_Source_to_Target.cpp(55,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DAG_course_schedule_2.cpp
+  DAG_game_routes.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DAG_game_routes.cpp(34,24): warning C4244: 'argument': conversion from '__int64' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DAG_game_routes.cpp(50,24): warning C4244: 'argument': conversion from '__int64' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DAG_game_routes.cpp(68,16): warning C4244: 'return': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=__int64
+          ]
+  DAG_largest_color.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DAG_largest_color.cpp(28,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Detect_an_odd_cycle_length.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\Detect_an_odd_cycle_length.cpp(31,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\Detect_an_odd_cycle_length.cpp(31,46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Detect_cycle_directed_Course Schedule.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\Detect_cycle_directed_Course Schedule.cpp(17,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Detect_Cycle_in_directed_graph.cpp
+  Detect_cycle_in_grid.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\Detect_cycle_in_grid.cpp(44,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\Detect_cycle_in_grid.cpp(44,44): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Detect_Cycle_in_undirected_graph.cpp
+  Detect_cycle_Is Graph Bipartite.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\Detect_cycle_Is Graph Bipartite.cpp(29,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Detect_cycle_shortest_cycle_undirected.cpp
+  DFS_Astronauts_pairs.cpp
+  DFS_keys_and_rooms.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DFS_keys_and_rooms.cpp(41,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DFS_largest_island.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DFS_largest_island.cpp(43,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DFS_largest_island.cpp(43,44): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DFS_reconstruct_itenrary.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\DFS_reconstruct_itenrary.cpp(40,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  representatio_find_center_of_star_graph.cpp
+  representation_Maximal_Network_Rank.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\representation_Maximal_Network_Rank.cpp(41,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\representation_Maximal_Network_Rank.cpp(42,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  BFS_Messege_Route.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\BFS_Messege_Route.cpp(15,24): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\BFS_Messege_Route.cpp(8,12): warning C4101: 'val': unreferenced local variable
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\BFS_Messege_Route.cpp(8,17): warning C4101: 'val1': unreferenced local variable
+  representation_Minimal_Trio_Degree.cpp
+  representation_adjacency_list.cpp
+  Generating Code...
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\representatio_find_center_of_star_graph.cpp(35): warning C4715: 'findCenter': not all control paths return a value
+  Compiling...
+  representation_adjacency_list_class.cpp
+  BFS_Snakes_and_ladders.cpp
+  BFS_valid_bfs.cpp
+  BFS_word_ladder.cpp
+C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\BFS_word_ladder.cpp(20,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  graph_theory_learn.vcxproj -> C:\Users\raids\OneDrive\Desktop\development_repo\graph_theory\x64\Debug\graph_theory_learn.exe

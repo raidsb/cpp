@@ -1,3 +1,141 @@
+/*
+C++ Containers library
+The Containers library is a generic collection of class templates (because can be used with different data types) 
+and algorithms that allow programmers to easily implement common data structures like queues, lists and stacks.
+
+There are two (until C++11)three (since C++11) classes of containers:
+[1] sequence containers
+[2] associative containers
+[3] unordered associative containers
+
+each of which is designed to support a different set of operations.
+
+The container manages the storage space that is allocated for its elements and provides member functions to access them,
+either directly or through iterators (objects with properties similar to pointers).
+
+Most containers have at least several member functions in common, and share functionalities.
+Which container is the best for the particular application depends not only on the offered functionality,
+but also on its efficiency for different workloads.
+
+[1] Sequence containers
+Sequence containers implement data structures which can be accessed sequentially.
+
+[1.1] array
+(C++11)
+static contiguous array
+(class template)
+
+[1.2] vector
+dynamic contiguous array
+(class template)
+
+[1.3] deque
+double-ended queue
+(class template)
+
+[1.4] forward_list
+(C++11)
+
+[1.5] singly-linked list
+(class template)
+list
+
+[1.6] doubly-linked list
+(class template)
+
+[2] Associative containers
+Associative containers implement sorted data structures that can be quickly searched (O(log n) complexity).
+
+[2.1] set
+collection of unique keys, sorted by keys
+(class template)
+
+[2.2] map
+collection of key-value pairs, sorted by keys, keys are unique
+(class template)
+
+[2.3] multiset
+collection of keys, sorted by keys
+(class template)
+
+[2.4] multimap
+collection of key-value pairs, sorted by keys
+(class template)
+
+[3] Unordered associative containers (since C++11)
+Unordered associative containers implement unsorted (hashed) data structures that can be quickly searched (O(1) average, O(n) worst-case complexity).
+
+[3.1] unordered_set
+(C++11)
+collection of unique keys, hashed by keys
+(class template)
+
+[3.2] unordered_map
+(C++11)
+collection of key-value pairs, hashed by keys, keys are unique
+(class template)
+
+[3.3] unordered_multiset
+(C++11)
+collection of keys, hashed by keys
+(class template)
+
+[3.4] unordered_multimap
+(C++11)
+collection of key-value pairs, hashed by keys
+(class template)
+
+[4]Container adaptors
+Container adaptors provide a different interface for sequential containers.
+
+[4.1] stack
+adapts a container to provide stack (LIFO data structure)
+(class template)
+
+[4.2] queue
+adapts a container to provide queue (FIFO data structure)
+(class template)
+
+[4.3] priority_queue
+adapts a container to provide priority queue
+(class template)
+
+[4.4] flat_set
+(C++23)
+adapts a container to provide a collection of unique keys, sorted by keys
+(class template)
+
+[4.5] flat_map
+(C++23)
+
+adapts two containers to provide a collection of key-value pairs, sorted by unique keys
+(class template)
+
+[4.6] flat_multiset
+(C++23)
+adapts a container to provide a collection of keys, sorted by keys
+(class template)
+
+[4.7] flat_multimap
+(C++23)
+adapts two containers to provide a collection of key-value pairs, sorted by keys
+(class template)
+
+[5] Views
+Views provide flexible facilities for interacting with one- or multi-dimensional views over a non-owning array of elements.
+
+[5.1] span
+(C++20)
+a non-owning view over a contiguous sequence of objects
+(class template)
+
+[5.2] mdspan
+(C++23)
+a multi-dimensional non-owning array view
+(class template)
+*/
+
+
 // std::vector.cpp by Bill Weinman <http://bw.org/>
 // updated 2002-09-02
 // Standard Template Library is commonly called STL. Provide containers and supporting datatypes and iterators.
