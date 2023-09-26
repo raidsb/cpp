@@ -1,0 +1,248 @@
+﻿WHAT IS cMAKE? 
+build system and project configuration tool used for managing the build process of C 
+and C++ software projects across different platforms and build environments
+
+
+Project Main CMAKE file instruction:
+1) "cmake_minimum_required(VERSION 3.15)"
+The line cmake_minimum_required(VERSION 3.15) is a CMake command that specifies the minimum version of 
+CMake required to configure and build a CMake project. 
+This command is typically placed near the beginning of a CMakeLists.txt file, which is used to define 
+how a CMake project should be built. 
+
+In this specific case, the command sets the minimum required CMake version to 3.15. This means that 
+any system running CMake 3.15 or a more recent version can be used to configure and build the project. 
+If a system has an older version of CMake installed (e.g., 3.14 or earlier), attempting to configure 
+the project with that older version will result in a CMake error, indicating that a more recent version
+of CMake is required. 
+
+Specifying the minimum required CMake version is essential because CMake evolves over time, and newer 
+versions may introduce features, improvements, and changes to the CMake language that are not compatible 
+with older versions. By setting a minimum required version, you ensure that users of your CMake project 
+have a compatible version of CMake installed. 
+
+Developers typically choose a minimum required version based on the features and capabilities they intend 
+to use in their CMake project. 
+Using a more recent version of CMake allows you to leverage the latest enhancements and features, 
+but it may limit compatibility with older CMake installations. 
+
+In practice, when you distribute a CMake-based project, you should document the minimum required CMake 
+version so that users know which version to install or upgrade to if necessary. 
+This helps ensure a smooth and error-free configuration and build process for your project. "
+
+2) Project information 
+project(MyCppProject
+		VERSION 0.0.1 
+		DESCRIPTION "My Cpp project"
+		LANGUAGES CXX)
+This line declares a CMake project named "MyCppProject."
+The VERSION keyword is used to specify the project's version number (in this case, version 0.0.1).
+The DESCRIPTION keyword provides a brief description of the project.
+The LANGUAGES keyword specifies the programming languages used in the project (in this case, C++ - denoted by CXX).
+This code sets up the basic project metadata, including its name, version, description, and the primary programming language.
+
+3) some configurations
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+	set (MODERN_CMAKE_BUILD_TESTING ON)
+	set (CMAKE_CXX_EXTENSIONS OFF)
+	set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+	# Support folders in IDEs.
+	set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+endif 
+The code snippet you've provided is a portion of a CMake configuration script. 
+Let's break down what each part does:
+
+1. if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME):
+This line checks if the CMake variable CMAKE_PROJECT_NAME is equal to the variable PROJECT_NAME.
+CMAKE_PROJECT_NAME is a built-in CMake variable that represents the name of the current project 
+being configured. PROJECT_NAME is typically a variable that developers can set to specify the name of their project.
+set (MODERN_CMAKE_BUILD_TESTING ON):
+
+2. If the condition in the if statement is true, this line sets the variable MODERN_CMAKE_BUILD_TESTING 
+to ON. MODERN_CMAKE_BUILD_TESTING is likely a variable used to control whether testing is enabled for 
+the project. Enabling testing means that CMake will generate build targets for running tests if there 
+are any defined in the project.
+
+3. set (CMAKE_CXX_EXTENSIONS OFF):
+This line sets the variable CMAKE_CXX_EXTENSIONS to OFF.
+CMAKE_CXX_EXTENSIONS controls whether the compiler should enable language extensions. 
+Setting it to OFF means that language extensions are disabled.
+
+4. set (CMAKE_EXPORT_COMPILE_COMMANDS ON):
+This line sets the variable CMAKE_EXPORT_COMPILE_COMMANDS to ON.
+CMAKE_EXPORT_COMPILE_COMMANDS controls whether CMake generates a compile_commands.json file, 
+which is used by some IDEs for code navigation and completion.
+
+5. set_property(GLOBAL PROPERTY USE_FOLDERS ON):
+This line sets a global property to enable the use of folders in IDEs.
+When USE_FOLDERS is set to ON, it organizes targets and source files into folders within integrated 
+development environments (IDEs) for better project structure and organization.
+
+The conditional check at the beginning ensures that these settings are applied only when configuring 
+the main project (i.e., when the CMake project name matches the specified project name). 
+These settings are often used to configure the build environment, compiler options, 
+and IDE integration for a CMake-based project.
+
+4) Turn on warnings for GCC.
+if (CMAKE_COMPILER_IS_GNUCC) 
+	add_compile_options(-Wall -Wextra -pedantic -Werror)
+endif 
+
+-Wall: Enables a set of commonly used warning flags, such as warnings about potentially problematic code constructs.
+-Wextra: Enables additional warning flags, including warnings about non-standard or potentially error-prone code.
+-pedantic: Requests stricter conformance to the C standard and additional warnings about non-standard language features.
+-Werror: Treats all warnings as errors, causing the compilation to fail if any warnings are generated.
+
+5) #Set prefix path to tools that we use.
+set(CMAKE_PREFIX_PATH some_path)
+set(BOOST_ROOT path_to_boost_lib)
+
+for set(CMAKE_PREFIX_PATH some_path)
+In CMake, the set(CMAKE_PREFIX_PATH some_path) command is used to specify one or more paths where 
+CMake should look for package configuration files or CMake configuration files. These paths are 
+often used when you are working with external libraries or dependencies that are not installed in
+the default system locations, and you want CMake to find and use them during the configuration process.
+
+Here's how this command works:
+CMAKE_PREFIX_PATH: This is a CMake variable that you can set to a list of paths separated by semicolons (;).
+Each path in this list represents a directory where CMake should search for package configuration files 
+or CMake configuration files.
+
+some_path: Replace this with the actual path or paths where your external dependencies or packages are 
+installed or located.
+
+For example, suppose you have an external library called "MyLibrary" that is installed in the directory 
+/path/to/mylibrary. You can use the set(CMAKE_PREFIX_PATH ...) command to specify the path to this 
+library:
+set(CMAKE_PREFIX_PATH /path/to/mylibrary)
+
+If you have multiple paths to specify, you can separate them with semicolons:
+set(CMAKE_PREFIX_PATH
+    /path/to/mylibrary
+    /path/to/anotherlibrary
+)
+
+After setting CMAKE_PREFIX_PATH, CMake will search these paths for package or configuration files when
+you use commands like find_package() to locate external libraries. It helps CMake locate and configure
+dependencies correctly, ensuring that your project can build and link against them.
+
+6) adding library modules 
+#Library modules go here.
+add_subdirectory(src) 
+
+add_subdirectory(src):
+This line instructs CMake to look for a CMakeLists.txt file in the src directory and process it. 
+The src directory is typically where you place the source code for library modules.
+The add_subdirectory command essentially includes and processes the CMake configuration for building the library 
+modules located in the src directory. This allows you to build libraries as part of your project.
+
+#Executable apps go here.
+add_subdirectory(apps)
+
+Similar to the previous line, this line instructs CMake to look for a CMakeLists.txt file in the apps directory and 
+process it. The apps directory is typically where you place the source code for executable applications.
+The add_subdirectory command includes and processes the CMake configuration for building the executable applications 
+located in the apps directory.
+
+Inside the src and apps directories, you would typically have separate CMake configuration files (CMakeLists.txt)
+that define how to build the libraries and executables, respectively. These configuration files specify source files, 
+compiler flags, dependencies, and other build-related settings for the components in their respective directories.
+
+example:
+project_root/
+│
+├── CMakeLists.txt
+│
+├── src/
+│   ├── CMakeLists.txt (for library modules)
+│   ├── library1.cpp
+│   ├── library2.cpp
+│   └── ...
+│
+├── apps/
+│   ├── CMakeLists.txt (for executable apps)
+│   ├── main_app1.cpp
+│   ├── main_app2.cpp
+│   └── ...
+│
+└── ...
+
+The top-level CMakeLists.txt file in the project root typically sets project-wide settings, global dependencies, 
+and additional project-level configurations.
+
+By structuring your project this way, you can maintain a clean separation between library code and executable code 
+and manage their build processes independently. Each directory (e.g., src and apps) can have its own build 
+configuration tailored to the specific needs of its components.
+
+In CMake, when the top-level CMakeLists.txt file includes add_subdirectory() commands to specify subdirectories, 
+CMake will process the CMakeLists.txt files in those subdirectories first before continuing with the rest of the
+configuration in the top-level CMakeLists.txt. The order of processing is top-down, meaning that CMake will
+process subdirectories in the order they are specified.
+
+Here's the typical flow:
+
+When you run CMake on your project, it starts with the top-level CMakeLists.txt file.
+If the top-level CMakeLists.txt includes add_subdirectory() commands, CMake will descend into those 
+subdirectories and process their CMakeLists.txt files first.
+
+Within each subdirectory, CMake will execute the configuration specified in the respective CMakeLists.txt file, 
+which may involve defining targets, setting compiler flags, specifying source files, and so on.
+
+After processing the subdirectory, CMake returns to the top-level CMakeLists.txt file and continues processing 
+any remaining configuration instructions.
+
+This order of processing is important because it allows you to set up dependencies and build components in the 
+correct order. For example, if your project consists of libraries and executables, you might want to build 
+libraries first so that executables can link against them.
+
+7) # Enable testing.
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+	include(CTest)
+endif()
+
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME):
+This line checks whether the value of the CMAKE_PROJECT_NAME variable is equal to the value of the PROJECT_NAME variable.
+CMAKE_PROJECT_NAME is a built-in CMake variable that represents the name of the current project being configured.
+PROJECT_NAME is a variable that is typically set by the project() command in the CMakeLists.txt file of the main project. 
+It specifies the name of the project.
+
+include(CTest):
+If the condition in the if statement is true (i.e., the current project is the main project), this line includes support
+for CTest. CTest is a CMake module that provides functionality for testing CMake-based projects. It includes commands 
+and variables for defining and running tests, collecting test results, and generating test-related targets.
+
+The purpose of this code is to enable CTest support when configuring the main project but not for subprojects or when 
+the CMake configuration is included as a subproject in another CMake project. By doing so, you can enable testing 
+specifically for the main project while excluding it for subprojects or nested projects.
+
+Typically, you would include CTest support in the main project's CMakeLists.txt file so that you can define and run 
+tests for your project. However, when your project is used as a subproject within another project, you may want to 
+avoid enabling testing for the subproject, which is why this conditional check is useful.
+
+8) # Testing only available in this is the main app.
+if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MODERN_CMAKE_BUILD_TESTING) AND BUILD_TESTING)
+	set (MY_TESTCASES_DIR path_to_test_cases)
+	add_subdirectory(tests)
+endif()
+
+(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MODERN_CMAKE_BUILD_TESTING): This condition checks two things:
+Whether the value of CMAKE_PROJECT_NAME is equal to the value of PROJECT_NAME, which typically means the current 
+project is the main project.
+Whether the MODERN_CMAKE_BUILD_TESTING variable is set to a true value (e.g., ON).
+If either of these conditions is true, it means that testing should be enabled for the project.
+AND BUILD_TESTING: This condition checks whether the BUILD_TESTING option is enabled. The BUILD_TESTING option 
+is a built-in CMake option that controls whether to build tests. If it is set to ON, tests will be built.
+
+set (MY_TESTCASES_DIR path_to_test_cases): This line sets the MY_TESTCASES_DIR variable to the specified path
+(path_to_test_cases). This variable is likely intended to store the directory where test cases are located.
+
+add_subdirectory(tests): If all the conditions mentioned above are met, this line includes the tests subdirectory 
+by using add_subdirectory. This typically means that the project is configured to build and run tests located 
+in the tests subdirectory.
+
+In summary, this code sets up conditions for enabling testing in a CMake project:
+Testing is enabled if the project is the main project (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME), 
+or if MODERN_CMAKE_BUILD_TESTING is set to ON, and BUILD_TESTING is also set to ON.
+If testing is enabled, it specifies the directory where test cases are located (MY_TESTCASES_DIR) and 
+includes the tests subdirectory for building and running tests.
