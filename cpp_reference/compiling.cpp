@@ -1,7 +1,37 @@
 /*
-* 
-* 
+reference on optimizing c++ code
 * optimization: https://www.tantalon.com/pete/cppopt/main.htm 
+
+
+What is a compiler?
+-------------------
+A computer can only understand machine language and humans wish to write in high level languages high level languages have to 
+be re-written (translated) into machine language at some point. This is done by special programs called compilers, interpreters, 
+or assemblers that are built into the various programming applications.
+
+C++ is a compiled language
+--------------------------
+C++ is designed to be a compiled language, meaning that it is generally translated into machine language that can be understood 
+directly by the system, making the generated program highly efficient. For that, a set of tools are needed, known as the development 
+toolchain, whose core are a compiler and its linker.
+
+What is a console program?
+--------------------------
+Console programs are programs that use text to communicate with the user and the environment, such as printing text to the 
+screen or reading input from a keyboard.
+
+Why console programs
+--------------------
+1- Console programs are easy to interact with, and generally have a predictable behavior that is identical across all platforms.
+2- They are also simple to implement and thus are very useful to learn the basics of a programming language: The examples in these 
+tutorials are all console programs.
+
+Commandline to compile c++ programs on unix
+-------------------------------------------
+g++ -std=c++0x example.cpp -o example_program
+
+what is a compiler, again
+-------------------------
 A compiler tool chain is a pipeline of software tools that convert code in a few big steps.
 There are three cases of compiler input I want to show you. Now think of these three cases as
 three important parts of a single software development project.

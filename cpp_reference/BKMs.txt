@@ -1,0 +1,118 @@
+/*
+to explore:
+- explore the struct vs union.
+- the const
+	- const char *
+	- const char * member in a class
+	- void setMyString(const char* str) { myString = str; };
+	- const char* getMyString() const { return myString;  };
+
+- create instance of a class without a new keyword with a given constructor.
+- using the implicit constructor with implicit conversion for more than one data members.
+-
+*/
+
+advices to programmers:
+-----------------------
+1] Use constructors to establish invariants.
+[2] Use constructor/destructor pairs to simplify resource management (RAII).
+[3] Avoid ‘‘naked’’ new and delete
+[4] Use containers and algorithms rather than built-in arrays and ad hoc code.
+[5] Prefer standard-library facilities to locally developed code .
+[6] Use exceptions, rather than error codes, to report errors that cannot be handled locally.
+[7] Use move semantics to avoid copying large objects .
+[8] Use unique_ptr to reference objects of polymorphic type.
+[9] Use shared_ptr to reference shared objects, that is, objects without a single owner that is
+responsible for their destruction .
+[10] Use templates to maintain static type safety (eliminate casts) and avoid unnecessary use
+of class hierarchies.
+
+
+/*
+Linux: Every distribution provides at least the GNU C++ compiler—usually already installed (see the short intro in Section B.1).
+Say we call our program hello42.cpp; it is easily compiled with the command.
+
+it is easily compiled with the command:
+g++ hello42.cpp // when you compile this file the output by default will be a.out. this is a last-century tradition, the resulting binary is called a.out by default.
+
+One day we might have more than one program, and then we can use more meaningful names with the output flag:
+g++ hello42.cpp -o hello42
+
+running:
+just call the generated bin
+using the build tool make. We can also use the build tool make that provides default rules for building binaries:
+> make my1 // once I typed this it showed the following
+g++     my1.cpp   -o my1
+
+//Our binary can be executed without needing any other software, and we can copy it to another compatible Linux system1 and run it there.
+*/
+
+/*
+Integrated Development Environment = IDE
+*/
+
+/*
+BKMs:
+- Compiling
+	- YES (Directives) use directives to include code from headers
+	- NO  (Directives) don't use #define constants,because directives don't check for types and not in context.
+
+- Primitive types
+	- YES (int) use <cstdint> to get fixed length int and avoid the int which is based on the os architecture and implementation. like int32_t.
+
+- Iterating
+	- Use pointers because it is faster when working with arrays.
+	- for loop using a pointer to iterate an array.
+
+- Condition
+	- Use switch if you want to check a value to list of possibilities and correspinding behaviors.
+
+- Functions
+	- Use pointers whe providing functions access to large block of data.
+	- passing complex datatype arguments use reference. safer and better for the memory.
+
+- Dynamic memory allocations
+   - Pointers for dyanmic memory allocation. when creating a variable, you create a static memory address
+   for it, the compiler knows that this space of memory is needed. but in applications, variables and objects are created dynamically in runtime.
+   this is called the dynamic memory allocation. in c is it called malloc functions.
+   - delete the allocated memory.
+
+- vectors
+	- when iterating vector elements use auto& to avoid copying the arg in the loop.
+	- which is better iterating a vector with auto& or a pointer?
+
+- structs
+	- YES (struct) Use structs for simple modesl. When you have only data members, supposed to be accessed as public. and use classes when there are also  functions/method.
+
+- class
+	- YES (constructors/destructors) the rule of three: if a classe's constructor/destructor/operator is defined, the rest should be defined too.
+	- YES (setter and getter) use setter and getter
+	- YES (const safe function) you have to create two getters for the data members if you want to get the data members of a const instance of the class.
+								// ..bottom line is that a getter with const safe qualifier can be used with getting data member of const instance or not const instance
+								// ..whereas a const object data member can only be get with const get qualifier (you have to create a const getter if you want to create a const object)
+	- YES (explict constructor)  the explicit keyword is to prevent any explicit conversion.
+	- YES (instance) create a new instane with the new keyword.
+	- YES (the rule of three)
+	- YES (array of instances) if needed an array of class instances. you can in one line. check the code for both constructor and destructor.
+	- YES (Inheritance, polymorphism) Single inheritance is recommended. multi is not to avoid complexity.
+	- NO (friend class) because it exposes private members.
+
+- const qualifier
+	- const variables: We use the const qualifier to declare a variable as constant.
+				   That means that we cannot change the value once the variable has been initialized.
+
+   Using const has a very big benefit. For example, if you have a constant value of the value of PI,
+   you wouldn't like any part of the program to modify that value.
+
+   Objects declared with const-qualified types may be placed in read-only memory by the compiler,
+   and if the address of a const object is never taken in a program, it may not be stored at all.
+					   1) it use regular definition
+        //             2) declarations specify type
+		//             3) scope encapsulation is enforced
+
+	- const data memebrs in structs and classes: use const data memebrs in structs and classes when they are only set at creating an instance and never changed after that:
+	- const instances need functions with const qualifier.
+
+- Algorithms
+	- Tree - get all pathes in a tree (undirected tree) -> Hackerrank Unique colors
+*/

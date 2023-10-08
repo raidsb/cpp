@@ -298,6 +298,7 @@ int practice_set() {
     a.find('F'); // return iterator of the type set<type> pointing to the element
     // const bool is_in = container.find(element) != container.end(); // to check if an item exists in the set.
 
+    // iterating over the set
     for (auto& str : a)
     {
         std::cout << str << ' ';
