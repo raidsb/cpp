@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cpp_reference"
+    "\\cpp_reference",
+    "\\my_cpp_template"
   ],
-  "SelectedNode": "\\cpp_reference\\datatypes_fundamentals.cpp",
+  "SelectedNode": "\\cpp_reference\\compiling.cpp",
   "PreviewInSolutionExplorer": false
 }

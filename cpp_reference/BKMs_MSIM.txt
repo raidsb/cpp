@@ -1,0 +1,106 @@
+The msim application structure
+------------------------------
+1. project directory
+	1. bin # this should include the binary file generated from compilation and building
+	2. docs # includes the documentation like release notes
+	3. includes # all header files grouped into sub directeries each for a module. folders same to those in source
+		a. buffer
+		b. db
+		c. fsdb # include header files from external libraries
+		d. global
+		e. main
+		f. module
+		g. utils
+		h. writer 
+	4. lib64 # include a files libraries 
+	5. src
+		a. buffer
+			1. implementation files .C and .CPP
+			2. Makefile
+		b. same for the others in the includes 
+		c. parsers 
+			1. parser_module_2
+				a. lex files .l
+				b. yacc files .y
+	 6. In this application a number of files are created used to compile and build the application
+		directly under src      // better to use the stil app one.
+		a. buildall             // a tcsh file used as com to build the application
+		   content: 
+		   #!/usr/bin/tcsh -f
+		   set DRP_MF_NAME="Makefile.ube"
+		   make -f ${DRP_MF_NAME} -j 8 build_libs
+		   if ($status) then
+				echo "Build of libraries failed"
+				exit(1);
+			endif
+
+			echo "Build of libraries passed"
+
+			make -f ${DRP_MF_NAME} -j 2 build_exes
+			if ($status) then
+				echo "Build of executables failed"
+				exit(1);
+			endif
+
+			echo "Build of executables passed"
+			rm -f parser/cmt/*.cpp
+			rm -f parser/cmt/*.h
+
+			echo "copying release notes to $MSIM_ROOT/docs"
+			rsync -a --csv-exclude "${MSIM_SRC_CODE_LOC}/../docs/" \
+			                       "${MSIM_ROOT}/docs"
+			cp ${MTPS_SRC_CODE_LOC}/../docs/* ${MSIM_ROOT}/docs
+			echo "Release at ${MSIM_ROOT}/bin/MSIM"
+			exit(0)
+
+		b. cleanall             // this is a tcsh file includes a clean command.
+		   content:
+		   #!/bin/tcsh 
+		   make -f Makefile.ube clean -j 10
+		d. Makefile.ube
+
+		e. Makefile.ube.common
+		f. Makefile.ube.tools   // 		
+		h. msim_env             (1) start with this first and we change the MSIM_ROOT /path/to/generated/bin/file
+		                            and then msim_build_env -opt or -debug
+		   content:
+		   setenv MSIM_SRC_CODE_LOC $PWD
+		   setenv MSIM_ROOT /PATH/TO/BUILD/DIR
+		   setenv msim_build_env -opt //-debug for debug mode 
+
+
+MSIM BKM:
+---------
+1- a c++ application must have a main function, which the application running starts with. the file which has the 
+main function doesn't have a header file and it only has the main function. The file name including the main function 
+will be the name of the application generated.
+
+main file content:
+#include <iostream> // the input/output stream library. used to in and out data or messeges. cout, cin
+#include <cstdio>   
+#include <string>
+
+#include <header files needed>
+int main(int argc, char** argv)
+{
+	time_t start_time = time(NULL);
+
+	application* _app = new application(argc, argv);
+
+	time_t end_tipe = time(NULL);
+	delete _app;
+	return 0;
+}
+
+- int main(int argc, char** argv): This is the entry point of the program, where argc represents the number 
+of command-line arguments passed to the program, and argv is an array of strings containing those arguments.
+- time_t start_time = time(NULL);: Declares a variable start_time of type time_t and initializes it with the 
+current time obtained using the time(NULL) function. This captures the start time of the program's execution.
+- application* _app = new application(argc, argv);: Creates a dynamically allocated object of type application 
+using the new operator. It constructs the object by passing the argc (argument count) and argv (argument vector) to its constructor.
+- time_t end_time = time(NULL);: Obtains the current time again after creating the application object. 
+This captures the end time of the program's execution.
+- delete _app;: Deletes the dynamically allocated object _app to release the memory allocated to it. This 
+prevents memory leaks by deallocating the memory occupied by the application object.
+- return 0;: Indicates that the program execution was successful by returning 0 as the exit status of the program.
+
