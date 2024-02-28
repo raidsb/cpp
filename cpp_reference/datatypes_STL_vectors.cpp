@@ -297,7 +297,7 @@ int practice_vectors() {
     std::vector<int> vec(20);
 
     // getting basic information about the vector: size, front, back.
-    std::cout << "size: " << vi1.size() << std::endl;   // 10 for 10 elements 
+    std::cout << "size: " << vi1.size() << std::endl;   // 10 for 10 elements // length of the vector
     std::cout << "front: " << vi1.front() << std::endl; // 1 the first element 
     std::cout << "back: " << vi1.back() << std::endl;   // 10 the last element.. I think for a stack, this is the top of the stack.
     vi1.pop_back(); // to pop last element
